@@ -15,7 +15,7 @@ if [ -f otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
   sudo apt-get -y install docker-ce
 
   echo "Run InSpec"
-  docker run --rm -v $(pwd):/share chef/inspec otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
+  docker run --rm -v $(pwd):/share chef/inspec bash otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
 else
   echo "We don't have tests for this homework"
   exit 0
