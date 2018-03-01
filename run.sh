@@ -9,8 +9,13 @@ ls -l
 
 if [ -f otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
   echo "Install Docker"
-  echo "..."
-  otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  sudo apt-get update
+  sudo apt-get -y install docker-ce
+
+  echo "Run InSpec"
+  docker run -it --rm -v $(pwd):/share chef/inspec otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
 else
   echo "We don't have tests for this homework"
   exit 0
