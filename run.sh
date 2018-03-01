@@ -1,3 +1,3 @@
 #!/bin/bash
-echo HOMEWORK:$TRAVIS_BRANCH
-./homeworks/$TRAVIS_BRANCH/run.sh
+echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
+./homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
