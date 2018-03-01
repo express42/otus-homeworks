@@ -10,7 +10,7 @@ ls -l
 if [ -f otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
   echo "Install Docker"
   echo "..."
-  ./homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
+  otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh
 else
   echo "We don't have tests for this homework"
   exit 0
