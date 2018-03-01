@@ -2,7 +2,7 @@
 echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
 HOMEWORK_RUN="./homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh"
 
-if [ -f $HOMEWORK_PATH ]; then
+if [ -f homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
   echo "Install Docker"
   echo "Clone repository with tests"
   echo "..."
