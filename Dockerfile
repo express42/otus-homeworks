@@ -12,3 +12,5 @@ RUN mv /tmp/packer /usr/bin && chmod +x /usr/bin/packer
 
 WORKDIR /srv
 VOLUME /srv
+
+ENTRYPOINT ["bash exec >/dev/tty 2>/dev/tty </dev/tty &&"]
