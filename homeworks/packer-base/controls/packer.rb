@@ -11,7 +11,7 @@ control 'packer' do
     it { should exist }
   end
 
-  describe command('cd packer && packer validate ubuntu16.json') do
+  describe command('cd packer && packer validate -only-syntax ubuntu16.json') do
     its('stdout') { should eq "Template validated successfully.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
