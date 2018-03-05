@@ -1,7 +1,0 @@
----
-lockfile_version: 1
-depends:
-- name: linters
-  resolved_source:
-    path: "/Users/postgred/Documents/Express42/OTUS/otus-homeworks/library/linters"
-  version_constraints: ">= 0"

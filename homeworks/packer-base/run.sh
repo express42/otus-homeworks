@@ -1,1 +1,1 @@
-inspec exec homeworks/$TRAVIS_BRANCH/
+inspec exec otus-homeworks/homeworks/packer-base
