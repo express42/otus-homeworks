@@ -1,13 +1,12 @@
 #!/bin/bash
 echo GROUP:2018-02
+echo BRANCH:$TRAVIS_PULL_REQUEST_BRANCH
 
-if [ $TRAVIS_PULL_REQUEST_BRANCH=="" ];
+if [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ];
 then
   echo "We don't have tests for master branch"
   exit 0
 fi
-
-echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
 
 echo "Clone repository with tests"
 git clone -b 2018-02 --single-branch https://github.com/express42/otus-homeworks.git
