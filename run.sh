@@ -2,7 +2,7 @@
 echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
 
 echo "Clone repository with tests"
-git clone https://github.com/express42/otus-homeworks.git
+git clone -b 2018-02 --single-branch https://github.com/express42/otus-homeworks.git
 
 if [ -f ./otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
   echo "Install Docker"
