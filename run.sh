@@ -1,5 +1,12 @@
 #!/bin/bash
 echo GROUP:2018-02
+
+if [ $TRAVIS_PULL_REQUEST_BRANCH=="" ];
+then
+  echo "We don't have tests for master branch"
+  exit 0
+fi
+
 echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
 
 echo "Clone repository with tests"
