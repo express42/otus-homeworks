@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install unzip curl -y
+RUN apt-get update && apt-get install unzip curl screen -y
 
 # Install InSpec
 RUN curl https://omnitruck.chef.io/install.sh | bash -s -- -P inspec
@@ -13,4 +13,4 @@ RUN mv /tmp/packer /usr/bin && chmod +x /usr/bin/packer
 WORKDIR /srv
 VOLUME /srv
 
-ENTRYPOINT ["bash exec >/dev/tty 2>/dev/tty </dev/tty &&"]
+ENTRYPOINT ["exec >/dev/tty 2>/dev/tty </dev/tty && /usr/bin/screen -s "]
