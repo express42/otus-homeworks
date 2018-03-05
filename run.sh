@@ -1,17 +1,21 @@
 #!/bin/bash
-echo GROUP:2018-02
-echo BRANCH:$TRAVIS_PULL_REQUEST_BRANCH
+GROUP=2018-02
+BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
 
-if [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ];
+echo GROUP:$GROUP
+
+if [ "$BRANCH" == "" ];
 then
   echo "We don't have tests for master branch"
   exit 0
 fi
 
-echo "Clone repository with tests"
-git clone -b 2018-02 --single-branch https://github.com/express42/otus-homeworks.git
+echo HOMEWORK:$BRANCH
 
-if [ -f ./otus-homeworks/homeworks/$TRAVIS_PULL_REQUEST_BRANCH/run.sh ]; then
+echo "Clone repository with tests"
+git clone -b $GROUP --single-branch https://github.com/express42/otus-homeworks.git
+
+if [ -f ./otus-homeworks/homeworks/$BRANCH/run.sh ]; then
   echo "Install Docker"
   echo "..."
   echo "Run tests"
