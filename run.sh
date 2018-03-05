@@ -1,4 +1,5 @@
 #!/bin/bash
+echo GROUP:2018-02
 echo HOMEWORK:$TRAVIS_PULL_REQUEST_BRANCH
 
 echo "Clone repository with tests"
