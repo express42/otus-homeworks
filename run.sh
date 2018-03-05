@@ -25,7 +25,7 @@ if [ -f $HOMEWORK_RUN ]; then
   sudo apt-get -y install docker-ce
 
   echo "Run tests"
-  $HOMEWORK_RUN
+  docker run -it -v $(pwd):/srv postgred/otus bash -c "$HOMEWORK_RUN"
 else
   echo "We don't have tests for this homework"
   exit 0
