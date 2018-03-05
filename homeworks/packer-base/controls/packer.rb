@@ -12,7 +12,7 @@ control 'packer' do
   end
 
   describe command('cd packer && packer validate -syntax-only ubuntu16.json') do
-    its('stdout') { should eq "Template validated successfully.\n" }
+    its('stdout') { should eq "Syntax-only check passed. Everything looks okay.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
