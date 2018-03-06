@@ -1,6 +1,6 @@
 #!/bin/bash
 GROUP=2018-02
-BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
+BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-TRAVIS_BRANCH}
 HOMEWORK_RUN=./otus-homeworks/homeworks/$BRANCH/run.sh
 REPO=https://github.com/express42/otus-homeworks.git
 
