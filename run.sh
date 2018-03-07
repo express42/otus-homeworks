@@ -3,6 +3,7 @@ GROUP=2018-02
 BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
 HOMEWORK_RUN=./otus-homeworks/homeworks/$BRANCH/run.sh
 REPO=https://github.com/express42/otus-homeworks.git
+DOCKER_IMAGE=express42/otus-homeworks
 
 echo GROUP:$GROUP
 
@@ -25,7 +26,7 @@ if [ -f $HOMEWORK_RUN ]; then
   sudo apt-get -y install docker-ce
 
   echo "Run tests"
-  docker run -v $(pwd):/srv postgred/otus $HOMEWORK_RUN
+  docker run -v $(pwd):/srv $DOCKER_IMAGE $HOMEWORK_RUN
 else
   echo "We don't have tests for this homework"
   exit 0
