@@ -19,11 +19,11 @@ echo "Clone repository with tests"
 git clone -b $GROUP --single-branch $REPO
 
 if [ -f $HOMEWORK_RUN ]; then
-  echo "Install Docker"
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  sudo apt-get update
-  sudo apt-get -y install docker-ce
+  # echo "Install Docker"
+  # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  # sudo apt-get update
+  # sudo apt-get -y install docker-ce
 
   echo "Run tests"
   docker run -v $(pwd):/srv $DOCKER_IMAGE $HOMEWORK_RUN
