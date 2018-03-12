@@ -26,7 +26,7 @@ if [ -f $HOMEWORK_RUN ]; then
   # sudo apt-get -y install docker-ce
 
   echo "Run tests"
-  docker run -v $(pwd):/srv $DOCKER_IMAGE $HOMEWORK_RUN
+  docker run -v $(pwd):/srv --cap-add=NET_ADMIN --device /dev/net/tun  -e BRANCH=$BRANCH $DOCKER_IMAGE $HOMEWORK_RUN
 else
   echo "We don't have tests for this homework"
   exit 0
