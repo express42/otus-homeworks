@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y unzip curl python3
+RUN apt-get update && apt-get install -y unzip curl python3 netcat openvpn
 
 # Install InSpec
 RUN curl https://omnitruck.chef.io/install.sh | bash -s -- -P inspec

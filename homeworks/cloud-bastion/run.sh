@@ -7,7 +7,7 @@ then
     apt-get install -y openvpn netcat
 fi
 
-openvpn --config cloud-bastion.ovpn --script-security 2 --up "/usr/bin/touch /tmp/vpn-up" --auth-user-pass otus-homeworks/homeworks/cloud-bastion/auth &
+openvpn --config cloud-bastion.ovpn --script-security 2 --up "/usr/bin/touch /tmp/vpn-up" --auth-user-pass otus-homeworks/homeworks/$BRANCH/auth &
 
 timeout 20 bash <<EOT
 while sleep 1 ; do
@@ -15,7 +15,7 @@ while sleep 1 ; do
 done
 EOT
 
-inspec exec homeworks/cloud-bastion || EXIT_STATUS=$?
+inspec exec otus-homeworks/homeworks/$BRANCH || EXIT_STATUS=$?
 
 exit $EXIT_STATUS
 
