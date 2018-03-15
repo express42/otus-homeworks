@@ -37,7 +37,7 @@ control 'Configuration' do
     its('processes') { should include 'mongod' }
   end
 
-  describe port(testapphost) do
+  describe port(testappport) do
     it { should be_listening }
     its('protocols') { should include 'tcp' }
     its('processes') { should include 'puma' }
@@ -62,7 +62,7 @@ control 'Reddit-APP' do
 
   describe http("http://#{testapphost}:#{testappport}/") do
       its('status') { should eq 200 }
-      its('body') { should cmp 'https://travis-ci.org' }
+      its('body') { should match match(%r{href\='https:\/\/travis-ci\.org\/'}) }
   end
 end
 

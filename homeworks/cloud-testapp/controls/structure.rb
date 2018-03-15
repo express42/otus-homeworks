@@ -13,7 +13,7 @@ control 'structure' do
   describe file('install_ruby.sh') do
     it { should exist }
     it { should be_allowed('execute') }
-    its('content') {should match(%r{\n\Z})}    
+    its('content') {should match(%r{\n\Z})}
   end
 
   describe file('install_mongodb.sh') do
@@ -25,7 +25,7 @@ control 'structure' do
   describe file('deploy.sh') do
     it { should exist }
     it { should be_allowed('execute') }
-    its('content') {should match(%r{\n\Z})}    
+    its('content') {should match(%r{\n\Z})}
   end
 
   describe directory('VPN') do
