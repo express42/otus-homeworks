@@ -46,16 +46,17 @@ control 'Configuration' do
 end
 
 control 'Reddit-APP' do
+  title 'Check testapp web-application'
 
   describe host(testapphost, port: testappport, protocol: 'tcp') do
     it { should be_reachable }
   end
 
-  describe command("curl http://#{testapphost}:#{testappport}}/signup -F 'username=travis' -F  'password=travis'")
+  describe command("curl http://#{testapphost}:#{testappport}}/signup -F 'username=travis' -F  'password=travis'") do
     its('exit_status') { should eq 0 }
   end
 
-  describe command("curl http://#{testapphost}:#{testappport}/new -F 'title=travis-test' -F  'link=https://travis-ci.org/'")
+  describe command("curl http://#{testapphost}:#{testappport}/new -F 'title=travis-test' -F  'link=https://travis-ci.org/'") do
     its('exit_status') { should eq 0 }
   end
 
