@@ -16,9 +16,7 @@ README.md -- файлы из репозитория пользователя
 otus-homeworks -- папка с автотестами
 ```
 
-
-
-**Как добавить что-нибудь в контейнер.** Отредактировать Dockerfile, собрать образ `docker build -t express42/otus-homeworks`, запушить `docker push express42/otus-homeworks`.
+**Как добавить что-нибудь в контейнер.** Отредактировать Dockerfile, дальше Docker Cloud отреагирует на push, соберет контейнер и опубликует его.
 
 ## Пример .travis.yml
 
