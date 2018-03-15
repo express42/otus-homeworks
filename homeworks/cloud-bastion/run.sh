@@ -18,6 +18,3 @@ EOT
 inspec exec otus-homeworks/homeworks/$BRANCH || EXIT_STATUS=$?
 
 exit $EXIT_STATUS
-
-
-

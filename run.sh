@@ -19,14 +19,17 @@ echo "Clone repository with tests"
 git clone -b $GROUP --single-branch $REPO
 
 if [ -f $HOMEWORK_RUN ]; then
-  # echo "Install Docker"
+  # sudo apt-get install openssh-client -y
   # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   # sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   # sudo apt-get update
   # sudo apt-get -y install docker-ce
-
   echo "Run tests"
-  docker run -v $(pwd):/srv --cap-add=NET_ADMIN --device /dev/net/tun  -e BRANCH=$BRANCH $DOCKER_IMAGE $HOMEWORK_RUN
+
+  docker run -d -v $(pwd):/srv --cap-add=NET_ADMIN -p 33433:22 --privileged --device /dev/net/tun --name hw-test $DOCKER_IMAGE  /sbin/init
+  docker exec -ti hw-test /bin/bash -c "BRANCH=$BRANCH $HOMEWORK_RUN"
+
+  # ssh -i id_rsa_test -p 33433 root@localhost "cd /srv && BRANCH=$BRANCH $HOMEWORK_RUN"
 else
   echo "We don't have tests for this homework"
   exit 0
