@@ -4,7 +4,7 @@
 title 'play-travis: structure'
 
 control 'structure' do
-  title 'Check files structure AND Check that last line has an newline symbol https://cifronomika.ru/blog/git-no-newline-at-end-of-file.html - Explanation'
+  title 'Check files structure AND Check that last line has a newline symbol https://cifronomika.ru/blog/git-no-newline-at-end-of-file.html - Explanation'
 
   describe file('README.md') do
     it { should exist }
