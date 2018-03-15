@@ -4,7 +4,7 @@
 title 'play-travis: structure'
 
 control 'structure' do
-  title 'Check files structure'
+  title 'Check files structure AND Check that last line has an newline symbol https://unix.stackexchange.com/questions/18743/whats-the-point-in-adding-a-new-line-to-the-end-of-a-file/18789#18789'
 
   describe file('README.md') do
     it { should exist }

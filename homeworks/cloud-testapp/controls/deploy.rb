@@ -40,7 +40,7 @@ control 'Configuration' do
   describe port(testappport) do
     it { should be_listening }
     its('protocols') { should include 'tcp' }
-    its('processes') { should include 'puma' }
+    its('processes') { should include 'ruby2.3' }
   end
 
 end
