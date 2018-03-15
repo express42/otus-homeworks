@@ -9,7 +9,7 @@ control 'Check README.md' do
     its('testapp_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
   end
   describe parse_config_file('README.md') do
-    its('testapp_PORT') { should match /^(?:[0-9]{1,5}\.)$/ }
+    its('testapp_PORT') { should match /^[0-9]{1,5}$/ }
   end
 
 end
@@ -52,7 +52,7 @@ control 'Reddit-APP' do
     it { should be_reachable }
   end
 
-  describe command("curl http://#{testapphost}:#{testappport}}/signup -F 'username=travis' -F  'password=travis'") do
+  describe command("curl http://#{testapphost}:#{testappport}/signup -F 'username=travis' -F  'password=travis'") do
     its('exit_status') { should eq 0 }
   end
 
@@ -60,7 +60,7 @@ control 'Reddit-APP' do
     its('exit_status') { should eq 0 }
   end
 
-  describe http('http://#{testapphost}:#{testappport}}/') do
+  describe http("http://#{testapphost}:#{testappport}/") do
       its('status') { should eq 200 }
       its('body') { should cmp 'https://travis-ci.org' }
   end
