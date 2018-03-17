@@ -15,7 +15,7 @@ control 'Check README.md' do
 end
 
 testapphost = parse_config_file('README.md').testapp_IP
-testappport = parse_config_file('README.md').testapp_PORT
+testappport = parse_config_file('README.md').testapp_port
 
 control 'Configuration' do
   title 'Check testapp installation scenarios'
