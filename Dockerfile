@@ -1,12 +1,14 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install -y unzip curl python3 netcat openvpn openssh-server git && \
+    apt-get install -y unzip curl python3 netcat openvpn openssh-server git sudo && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd && \
     mkdir /root/.ssh
 # RUN echo "export VISIBLE=now" >> /etc/profile
+
+RUN useradd appuser -m -G sudo
 
 COPY id_rsa_test.pub /root/.ssh/authorized_keys
 
