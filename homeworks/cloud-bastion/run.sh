@@ -10,11 +10,11 @@ fi
 openvpn --config cloud-bastion.ovpn --script-security 2 --up "/usr/bin/touch /tmp/vpn-up" --auth-user-pass otus-homeworks/homeworks/$BRANCH/auth &
 
 timeout 20 bash <<EOT
-while sleep 1 ; do
+while sleep 5; do
     test -f /tmp/vpn-up && break
 done
 EOT
 
 inspec exec otus-homeworks/homeworks/$BRANCH || EXIT_STATUS=$?
-
+pgrep -f openvpn | xargs kill -9
 exit $EXIT_STATUS
