@@ -16,5 +16,5 @@ done
 EOT
 
 inspec exec otus-homeworks/homeworks/$BRANCH || EXIT_STATUS=$?
-pgrep -f openvpn | xargs kill -9
+pgrep -f openvpn | xargs kill -SIGTERM
 exit $EXIT_STATUS
