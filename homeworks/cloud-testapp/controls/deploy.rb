@@ -9,7 +9,7 @@ control 'Check README.md' do
     its('testapp_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
   end
   describe parse_config_file('README.md') do
-    its('testapp_PORT') { should match /^[0-9]{1,5}$/ }
+    its('testapp_port') { should match /^[0-9]{1,5}$/ }
   end
 
 end
