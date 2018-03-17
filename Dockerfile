@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install -y unzip curl python3 netcat openvpn openssh-server && \
+    apt-get install -y unzip curl python3 netcat openvpn openssh-server git && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd && \
