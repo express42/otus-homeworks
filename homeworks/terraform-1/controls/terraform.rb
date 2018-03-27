@@ -16,4 +16,10 @@ control 'terraform' do
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
+
+  describe command('cd terraform && tflint --var-file=terraform.tfvars.example --error-with-issues') do
+    its('stdout') { should match "Your code is following the best practices" }
+    its('stderr') { should eq '' }
+    its('exit_status') { should eq 0 }
+  end
 end
