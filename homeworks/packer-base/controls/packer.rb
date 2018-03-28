@@ -11,8 +11,12 @@ control 'packer' do
     it { should exist }
   end
 
-  describe command('cd packer && packer validate -syntax-only ubuntu16.json') do
-    its('stdout') { should eq "Syntax-only check passed. Everything looks okay.\n" }
+  describe file('packer/variables.json.example') do
+    it { should exist }
+  end
+
+  describe command('cd packer && packer validate -var-file=variables.json.example ubuntu16.json') do
+    its('stdout') { should eq "Template validated successfully.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
