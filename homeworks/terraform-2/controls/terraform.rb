@@ -17,19 +17,19 @@ control 'terraform' do
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe command('cd terraform && terraform init && terraform validate -backend=false -var-file=terraform.tfvars.example') do
+  describe command('cd terraform && terraform init -backend=false && terraform validate -var-file=terraform.tfvars.example') do
     its('stdout') { should match "Terraform has been successfully initialized!" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd terraform/prod && terraform init && terraform validate -backend=false -var-file=terraform.tfvars.example') do
+  describe command('cd terraform/prod && terraform init -backend=false && terraform validate -var-file=terraform.tfvars.example') do
     its('stdout') { should match "Terraform has been successfully initialized!" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd terraform/stage && terraform init && terraform validate -backend=false -var-file=terraform.tfvars.example') do
+  describe command('cd terraform/stage && terraform init -backend=false && terraform validate -var-file=terraform.tfvars.example') do
     its('stdout') { should match "Terraform has been successfully initialized!" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
