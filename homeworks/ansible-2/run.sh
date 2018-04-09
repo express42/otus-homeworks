@@ -2,4 +2,4 @@
 set -e
 
 # Run InSpec
-inspec exec otus-homeworks/homeworks/ansible-1
+inspec exec otus-homeworks/homeworks/ansible-2
