@@ -4,7 +4,7 @@ ARG PACKER_VER=1.2.1
 ARG TERRAFORM_VER=0.11.5
 ARG TFLINT_VER=0.5.4
 ARG ANSIBLE_VER=2.4.3
-ARG ANSLINT_VER=3.4.20
+ARG ANSLINT_VER=3.4.21
 
 RUN apt-get update && \
     apt-get install -y unzip curl python3 netcat openvpn openssh-server git sudo python-pip && \
