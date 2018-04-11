@@ -16,7 +16,7 @@ control 'ansible' do
   end
 
   describe command('find ansible/playbooks -name "*.yml" -type f -print0 | ANSIBLE_ROLES_PATH=ansible/roles xargs -0 -n1 ansible-playbook --syntax-check') do
-    its('stdout') { should match (//) }
+    its('stdout') { should match (/playbook:/) }
     its('exit_status') { should eq 0 }
   end
 end
