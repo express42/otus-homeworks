@@ -12,7 +12,7 @@ control 'ansible' do
   end
 
   describe command('cd ansible && ansible-playbook --syntax-check clone.yml') do
-    its('stdout') { should match "playbook: clone.yml" }
+    its('stdout') { should match 'playbook: clone.yml' }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end

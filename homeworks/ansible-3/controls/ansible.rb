@@ -12,11 +12,12 @@ control 'ansible' do
   end
 
   describe command('cd ansible && ansible-lint playbooks/site.yml --exclude=roles/jdauphant.nginx') do
+    its('stdout') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
   describe command('find ansible/playbooks -name "*.yml" -type f -print0 | ANSIBLE_ROLES_PATH=ansible/roles xargs -0 -n1 ansible-playbook --syntax-check') do
-    its('stdout') { should match (/playbook:/) }
+    its('stderr') { should_not match (/The error appears to have been/) }
     its('exit_status') { should eq 0 }
   end
 end
