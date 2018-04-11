@@ -7,29 +7,19 @@ control 'packer' do
   impact 1
   title 'Run packer validate'
 
-  describe file('packer/app.json') do
-    it { should exist }
-    its('content') { should match(%r{\n\Z}) }
-  end
+  files = [
+    'packer/app.json',
+    'packer/db.json',
+    'packer/variables.json.example',
+    'ansible/packer_app.yml',
+    'ansible/packer_db.yml',
+  ]
 
-  describe file('packer/db.json') do
-    it { should exist }
-    its('content') { should match(%r{\n\Z}) }
-  end
-
-  describe file('packer/variables.json.example') do
-    it { should exist }
-    its('content') { should match(%r{\n\Z}) }
-  end
-
-  describe file('ansible/packer_app.yml') do
-    it { should exist }
-    its('content') { should match(%r{\n\Z}) }
-  end
-
-  describe file('ansible/packer_db.yml') do
-    it { should exist }
-    its('content') { should match(%r{\n\Z}) }
+  files.each do |path|
+    describe file(path) do
+      it { should exist }
+      its('content') { should match(%r{\n\Z}) }
+    end
   end
 
   describe command('packer validate -var-file=packer/variables.json.example packer/app.json') do

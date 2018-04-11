@@ -27,6 +27,7 @@ if [ -f $HOMEWORK_RUN ]; then
   echo "Run tests"
 
   docker run -d -v $(pwd):/srv --cap-add=NET_ADMIN -p 33433:22 --privileged --device /dev/net/tun --name hw-test $DOCKER_IMAGE  /sbin/init
+  docker exec hw-test bash -c 'echo -=Get versions=-; ansible --version; ansible-lint --version; packer version; terraform version; tflint --version'
   docker exec -e USER=appuser -e BRANCH=$BRANCH hw-test $HOMEWORK_RUN
 
   # ssh -i id_rsa_test -p 33433 root@localhost "cd /srv && BRANCH=$BRANCH $HOMEWORK_RUN"

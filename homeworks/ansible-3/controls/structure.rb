@@ -1,7 +1,7 @@
 # encoding: utf-8
 # copyright: 2018, The Authors
 
-title 'ansible-2: structure'
+title 'ansible-3: structure'
 
 control 'structure' do
   title 'Check repo structure'
