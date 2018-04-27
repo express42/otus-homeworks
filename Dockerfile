@@ -1,10 +1,13 @@
 FROM ubuntu:16.04
 
-ARG PACKER_VER=1.2.2
+LABEL version="0.4" maintainer="Express42"
+
+ARG PACKER_VER=1.2.3
 ARG TERRAFORM_VER=0.11.7
 ARG TFLINT_VER=0.5.4
-ARG ANSIBLE_VER=2.5.1
+ARG ANSIBLE_VER=2.5.2
 ARG ANSLINT_VER=3.4.21
+ARG DOCKERCOMPOSE_VER=1.21.0
 
 RUN apt-get update && \
     apt-get install -y unzip curl python3 netcat openvpn openssh-server git sudo python-pip && \
@@ -43,7 +46,7 @@ RUN cd /tmp && \
     chmod +x /usr/bin/tflint
 
 # Install ansible & ansible-lint
-RUN pip install ansible==${ANSIBLE_VER} ansible-lint==${ANSLINT_VER}
+RUN pip install ansible==${ANSIBLE_VER} ansible-lint==${ANSLINT_VER} docker-compose==${DOCKERCOMPOSE_VER}
 
 WORKDIR /srv
 VOLUME /srv
