@@ -3,6 +3,9 @@
 
 title 'docker-2: docker'
 
+host = 'reddit'
+port = 9292
+
 control 'docker' do
   title 'Check docker build'
 
@@ -16,12 +19,24 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
+  describe command('sleep 30') do
+    its('exit_status') { should eq 0 }
+  end
+
   describe host('reddit', port: 9292, protocol: 'tcp') do
     it { should be_resolvable }
     it { should be_reachable }
   end
 
-  describe http('http://reddit:9292/') do
+  describe command("curl http://#{host}:#{port}/signup -F 'username=travis' -F  'password=travis'") do
+    its('exit_status') { should eq 0 }
+  end
+
+  describe command("curl http://#{host}:#{port}/new -F 'title=travis-test' -F  'link=https://travis-ci.org/'") do
+    its('exit_status') { should eq 0 }
+  end
+
+  describe http('http://#{host}:#{port}/') do
     its('status') { should eq 200 }
     its('body') { should match match('Monolith Reddit') }
   end
