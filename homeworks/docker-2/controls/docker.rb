@@ -19,7 +19,7 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command("curl --connect-timeout 30 http://#{host}:#{port}") do
+  describe command("sleep 15") do
     its('exit_status') { should eq 0 }
   end
 
@@ -36,7 +36,7 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
-  describe http('http://#{host}:#{port}/') do
+  describe http("http://#{host}:#{port}/") do
     its('status') { should eq 200 }
     its('body') { should match match('Monolith Reddit') }
   end
