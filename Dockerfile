@@ -7,6 +7,7 @@ ARG TERRAFORM_VER=0.11.7
 ARG TFLINT_VER=0.5.4
 ARG ANSIBLE_VER=2.5.2
 ARG ANSLINT_VER=3.4.21
+ARG DOCKERVERSION=18.03.0-ce
 ARG DOCKERCOMPOSE_VER=1.21.0
 
 RUN apt-get update && \
@@ -44,6 +45,13 @@ RUN cd /tmp && \
     rm /tmp/tflint_linux_amd64.zip && \
     mv /tmp/tflint /usr/bin && \
     chmod +x /usr/bin/tflint
+
+# Install docker client
+RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
+    && mv docker-${DOCKERVERSION}.tgz docker.tgz \
+    && tar xzvf docker.tgz \
+    && mv docker/docker /usr/local/bin \
+    && rm -r docker docker.tgz
 
 # Install ansible & ansible-lint
 RUN pip install ansible==${ANSIBLE_VER} ansible-lint==${ANSLINT_VER} docker-compose==${DOCKERCOMPOSE_VER}
