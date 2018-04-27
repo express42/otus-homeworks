@@ -19,7 +19,7 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('sleep 30') do
+  describe command("curl --connect-timeout 30 http://#{host}:#{port}") do
     its('exit_status') { should eq 0 }
   end
 
