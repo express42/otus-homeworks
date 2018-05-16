@@ -3,6 +3,8 @@
 
 title 'docker-3: docker'
 
+host = 'ui'
+port = 9292
 user = 'travisuser'
 network = 'hw-test-net'
 version = 'latest'
@@ -48,11 +50,11 @@ control 'docker' do
     it { should be_reachable }
   end
 
-  describe command("curl http://localhost:9292/new -F 'title=travis-test' -F  'link=https://travis-ci.org/'") do
+  describe command("curl http://#{host}:#{port}/new -F 'title=travis-test' -F  'link=https://travis-ci.org/'") do
     its('exit_status') { should eq 0 }
   end
 
-  describe http('http://localhost:9292/') do
+  describe http("http://#{host}:#{port}/") do
     its('status') { should eq 200 }
     its('body') { should match match('Microservices Reddit in') }
   end
