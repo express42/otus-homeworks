@@ -41,7 +41,7 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('sleep 15') do
+  describe command('sleep 30') do
     its('exit_status') { should eq 0 }
   end
 
