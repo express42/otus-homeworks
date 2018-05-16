@@ -37,7 +37,7 @@ control 'docker' do
                     "docker run -d --network=#{network} --network-alias=post #{user}/post:#{version} && "\
                     "docker run -d --network=#{network} --network-alias=comment #{user}/comment:#{version} && "\
                     "docker run -d --network=#{network} -p 9292:9292 --name=ui #{user}/ui:#{version}") do
-    its('stderr') { should eq '' }
+    # its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
