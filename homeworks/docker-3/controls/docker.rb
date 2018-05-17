@@ -18,20 +18,20 @@ endpoints = [
 control 'docker' do
   title 'Check docker build'
 
-  describe command("cd src/ui && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
+  # describe command("cd src/ui && USER_NAME=#{user} bash docker_build.sh") do
+  #   its('stderr') { should eq '' }
+  #   its('exit_status') { should eq 0 }
+  # end
 
-  describe command("cd src/comment && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
+  # describe command("cd src/comment && USER_NAME=#{user} bash docker_build.sh") do
+  #   its('stderr') { should eq '' }
+  #   its('exit_status') { should eq 0 }
+  # end
 
-  describe command("cd src/post-py && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
+  # describe command("cd src/post-py && USER_NAME=#{user} bash docker_build.sh") do
+  #   its('stderr') { should eq '' }
+  #   its('exit_status') { should eq 0 }
+  # end
 
   describe command("docker run -d --network=#{network} --network-alias=post_db --network-alias=comment_db mongo:latest && "\
                     "docker run -d --network=#{network} --network-alias=post #{user}/post:#{version} && "\
@@ -41,11 +41,11 @@ control 'docker' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('sleep 30') do
+  describe command('sleep 15') do
     its('exit_status') { should eq 0 }
   end
 
-  describe host('ui', port: 9292, protocol: 'tcp') do
+  describe host(host, port: port, protocol: 'tcp') do
     it { should be_resolvable }
     it { should be_reachable }
   end
