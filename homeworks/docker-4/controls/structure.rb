@@ -5,10 +5,6 @@ control 'structure' do
   title 'Check repo structure, docker-compose.yml & newline https://stackoverflow.com/questions/729692/why-should-text-files-end-with-a-newline'
 
   dirs = [
-    'docker',
-    'docker/docker-monolith',
-    'monitoring',
-    'monitoring/prometheus',
     'src',
     'src/ui',
     'src/comment',
@@ -17,10 +13,8 @@ control 'structure' do
 
   files = [
     'README.md',
-    'docker/.env.example',
-    'docker/docker-compose.yml',
-    'monitoring/prometheus/Dockerfile',
-    'monitoring/prometheus/prometheus.yml',
+    'src/docker-compose.yml',
+    'src/.env.example',
     'src/ui/Dockerfile',
     'src/comment/Dockerfile',
     'src/post-py/Dockerfile',
@@ -39,11 +33,7 @@ control 'structure' do
     end
   end
 
-  describe file('docker/.env') do
-    it { should_not exist }
-  end
-
-  describe command('cd docker && cp .env.example .env && docker-compose -f docker-compose.yml config') do
+  describe command('cd src && cp .env.example .env && docker-compose -f docker-compose.yml config') do
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
