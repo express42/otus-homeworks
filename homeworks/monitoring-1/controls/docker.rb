@@ -23,25 +23,12 @@ containers = [
   "docker run -d --network=#{network} -p 9090:9090 --name=prometheus #{user}/prometheus:#{version}",
 ]
 
-msrvs = [
-  'ui',
-  'comment',
-  'post-py',
-]
-
 monitoring = [
   'prometheus',
 ]
 
 control 'docker' do
   title 'Check docker build & run'
-
-  msrvs.each do |service|
-    describe command("cd src/#{service} && USER_NAME=#{user} bash docker_build.sh") do
-      its('stderr') { should eq '' }
-      its('exit_status') { should eq 0 }
-    end
-  end
 
   monitoring.each do |service|
     describe command("cd monitoring/#{service} && docker build -t #{user}/prometheus .") do

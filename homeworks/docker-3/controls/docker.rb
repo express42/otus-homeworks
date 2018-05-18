@@ -1,7 +1,5 @@
 # encoding: utf-8
-# copyright: 2018, The Authors
-
-title 'docker-3: docker'
+# copyright: 2018, Express42
 
 host = 'ui'
 port = 9292
@@ -23,22 +21,7 @@ containers = [
 ]
 
 control 'docker' do
-  title 'Check docker build'
-
-  describe command("cd src/ui && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
-
-  describe command("cd src/comment && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
-
-  describe command("cd src/post-py && USER_NAME=#{user} bash docker_build.sh") do
-    its('stderr') { should eq '' }
-    its('exit_status') { should eq 0 }
-  end
+  title 'Check docker build & run'
 
   containers.each do |run_cmd|
     describe command(run_cmd) do

@@ -1,7 +1,5 @@
 # encoding: utf-8
-# copyright: 2018, The Authors
-
-title 'docker-3: structure'
+# copyright: 2018, Express42
 
 control 'structure' do
   title 'Check repo structure'

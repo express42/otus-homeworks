@@ -20,21 +20,8 @@ containers = [
   "docker run -d --network=#{network} -p 9292:9292 --name=ui #{user}/ui:#{version}",
 ]
 
-msrvs = [
-  'ui',
-  'comment',
-  'post-py',
-]
-
 control 'docker' do
-  title 'Check docker build'
-
-  msrvs.each do |service|
-    describe command("cd src/#{service} && USER_NAME=#{user} bash docker_build.sh") do
-      its('stderr') { should eq '' }
-      its('exit_status') { should eq 0 }
-    end
-  end
+  title 'Check docker build & run'
 
   containers.each do |run_cmd|
     describe command(run_cmd) do
