@@ -10,6 +10,6 @@ control 'gitlab-ci-2' do
     its('content') { should include 'name: branch/$CI_COMMIT_REF_NAME' }
     its('content') { should include 'name: stage' }
     its('content') { should include 'name: production' }
-    its('content') { should include '- /^\d+\.\d+.\d+/' }
+    its('content') { should include '- /^\d+\.\d+\.\d+/' }
   end
 end
