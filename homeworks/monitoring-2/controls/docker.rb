@@ -46,7 +46,7 @@ control 'docker' do
     end
   end
 
-  describe command('sleep 40') do
+  describe command('sleep 20') do
     its('exit_status') { should eq 0 }
   end
 
