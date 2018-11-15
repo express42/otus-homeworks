@@ -4,8 +4,6 @@
 control 'logging' do
   title 'Check logging settings'
 
-  fluentd = File.read('logging/fluentd/fluent.conf')
-
   describe file('logging/fluentd/fluent.conf') do
     it { should exist }
     its('content') { should match (/grok_pattern %{RUBY_LOGGER}/)}
