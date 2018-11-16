@@ -20,26 +20,26 @@ control 'structure' do
   files = [
     'README.md',
     'kubernetes/Charts/reddit/Chart.yaml',
-    'kubernetes/Charts/reddit/.gitlab-ci.yml',
 
     'kubernetes/Charts/ui/Chart.yaml',
-    'kubernetes/Charts/ui/.gitlab-ci.yml',
     'kubernetes/Charts/ui/templates/_helpers.tpl',
     'kubernetes/Charts/ui/templates/deployment.yaml',
     'kubernetes/Charts/ui/templates/ingress.yaml',
     'kubernetes/Charts/ui/templates/service.yaml',
 
     'kubernetes/Charts/post/Chart.yaml',
-    'kubernetes/Charts/post/.gitlab-ci.yml',
     'kubernetes/Charts/post/templates/_helpers.tpl',
     'kubernetes/Charts/post/templates/deployment.yaml',
     'kubernetes/Charts/post/templates/service.yaml',
 
     'kubernetes/Charts/comment/Chart.yaml',
-    'kubernetes/Charts/comment/.gitlab-ci.yml',
     'kubernetes/Charts/comment/templates/_helpers.tpl',
     'kubernetes/Charts/comment/templates/deployment.yaml',
     'kubernetes/Charts/comment/templates/service.yaml',
+
+    'src/ui/.gitlab-ci.yml',
+    'src/post/.gitlab-ci.yml',
+    'src/comment/.gitlab-ci.yml',
   ]
 
   dirs.each do |path|
