@@ -1,0 +1,8 @@
+name: kubernetes-1
+title: kubernetes-1 checks
+maintainer: Express42
+copyright: Express42
+copyright_email: input@express42.com
+license: Apache-2.0
+summary: OTUS homework checks
+version: 0.1.0
