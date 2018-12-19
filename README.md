@@ -26,5 +26,5 @@ language: bash
 sudo: required
 
 before_install:
-  - curl https://raw.githubusercontent.com/express42/otus-homeworks/2018-09/run.sh | bash
+  - curl https://raw.githubusercontent.com/express42/otus-homeworks/2018-11/run.sh | bash
 ```
