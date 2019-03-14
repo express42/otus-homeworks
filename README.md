@@ -20,7 +20,7 @@ otus-homeworks -- папка с автотестами
 
 ## Пример .travis.yml
 
-```
+```yaml
 dist: trusty
 language: bash
 sudo: required
