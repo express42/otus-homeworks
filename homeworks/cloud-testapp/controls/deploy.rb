@@ -11,8 +11,8 @@ control 'Check README.md' do
   end
 end
 
-testapphost = file('README.md').content?.match(/\s*testapp_IP = ((?:[0-9]{1,3}\.){3}[0-9]{1,3})$/m)[1]
-testappport = file('README.md').content?.match(/\s*testapp_port = ([0-9]{1,5})$/m)[1]
+testapphost = file('README.md').read.match(/\s*testapp_IP = ((?:[0-9]{1,3}\.){3}[0-9]{1,3})$/m)[1]
+testappport = file('README.md').read.match(/\s*testapp_port = ([0-9]{1,5})$/m)[1]
 
 control 'Configuration' do
   title 'Check testapp installation scenarios'
