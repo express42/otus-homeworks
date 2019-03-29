@@ -5,17 +5,14 @@ title 'cloud-testapp: deploy'
 
 control 'Check README.md' do
 
-  describe parse_config_file('README.md') do
-    its('testapp_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
+  describe file('README.md') do
+    its('content') { should match /^testapp_IP = ((?:[0-9]{1,3}\.){3}[0-9]{1,3})$/m }
+    its('content') { should match /^testapp_port = ([0-9]{1,5})$/m }
   end
-  describe parse_config_file('README.md') do
-    its('testapp_port') { should match /^[0-9]{1,5}$/ }
-  end
-
 end
 
-testapphost = parse_config_file('README.md').testapp_IP
-testappport = parse_config_file('README.md').testapp_port
+testapphost = file('README.md').content.match(/^testapp_IP = ((?:[0-9]{1,3}\.){3}[0-9]{1,3})$/m)[1]
+testappport = file('README.md').content.match(/^testapp_port = ([0-9]{1,5})$/m)[1]
 
 control 'Configuration' do
   title 'Check testapp installation scenarios'
