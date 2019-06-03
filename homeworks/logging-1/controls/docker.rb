@@ -4,7 +4,7 @@
 port = 9292
 user = 'travisuser'
 network = 'hw-test-net'
-version = 'latest'
+version = 'logging'
 
 endpoints = [
   'http://comment:9292/healthcheck',
