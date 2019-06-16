@@ -4,3 +4,15 @@
 
 # Тесты для потоков
 [2019-02](https://github.com/express42/otus-homeworks/tree/2019-02)
+
+# Homework-01 git-1
+<br>Создаем файл txt с наименованием имя-фамилия (aleksandr-aryutkin)
+<br>Проверяем статус файла
+<br>```git status```
+<br>Добавляем в индекс
+<br>```git add aleksandr-aryutkin.txt```
+<br>Коммитим
+<br>```git commit -m "commit with empty txt.file"```
+<br>Пушим
+<br>```git push```
+<br>Создаем PR к нужному репозиторию
