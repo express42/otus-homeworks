@@ -4,11 +4,11 @@
 title 'cloud-bastion: vpn'
 
 describe parse_config_file('README.md') do
-  its('bastion_IP') { should match /((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))\s{0,2}$/ }
+  its('bastion_IP') { should match /((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))$/ }
 end
 
 describe parse_config_file('README.md') do
-  its('someinternalhost_IP') { should match /((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))\s{0,2}$/ }
+  its('someinternalhost_IP') { should match /((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))$/ }
 end
 
 remotehost = parse_config_file('README.md').someinternalhost_IP
