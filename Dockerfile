@@ -24,6 +24,8 @@ COPY id_rsa_test.pub /root/.ssh/authorized_keys
 
 # Install InSpec
 RUN curl https://omnitruck.chef.io/install.sh | bash -s -- -P inspec
+# Accept chef license
+RUN inspec exec --chef-license accept
 
 # Install Packer
 RUN cd /tmp && \
