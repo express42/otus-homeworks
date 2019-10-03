@@ -3,18 +3,16 @@
 
 title 'cloud-bastion: vpn'
 
-configfile = file('README.md').content
-
-describe parse_config(configfile) do
+describe parse_config_file('README.md') do
   its('bastion_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
 end
 
-describe parse_config(configfile) do
+describe parse_config_file('README.md') do
   its('someinternalhost_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
 end
 
-remotehost = parse_config(configfile).someinternalhost_IP
-bastionhost = parse_config(configfile).bastion_IP
+remotehost = parse_config_file('README.md').someinternalhost_IP
+bastionhost = parse_config_file('README.md').bastion_IP
 
 control 'vpn' do
   title 'Check OpenVPN connection to pritunl'

@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL version="0.5" maintainer="Express42"
+LABEL version="0.6" maintainer="Express42"
 
 ARG PACKER_VER=1.2.4
 ARG TERRAFORM_VER=0.12.8
@@ -9,6 +9,7 @@ ARG ANSIBLE_VER=2.6.0
 ARG ANSLINT_VER=3.4.23
 ARG DOCKERVERSION=18.03.0-ce
 ARG DOCKERCOMPOSE_VER=1.21.0
+ARG INSPEC_VER=4.17.17
 
 RUN apt-get update && \
     apt-get install -y unzip curl python3 netcat openvpn openssh-server git sudo python-pip && \
@@ -22,10 +23,12 @@ RUN useradd appuser -m -G sudo
 
 COPY id_rsa_test.pub /root/.ssh/authorized_keys
 
+
 # Install InSpec
-RUN curl https://omnitruck.chef.io/install.sh | bash -s -- -P inspec
-# Accept chef license
-RUN inspec exec --chef-license accept
+RUN cd /tmp && \
+    curl -O https://packages.chef.io/files/stable/inspec/${INSPEC_VER}/ubuntu/16.04/inspec_${INSPEC_VER}-1_amd64.deb && \
+    apt-get install -f /tmp/inspec_${INSPEC_VER}-1_amd64.deb && \
+    inspec exec --chef-license accept
 
 # Install Packer
 RUN cd /tmp && \
