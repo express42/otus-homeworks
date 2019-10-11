@@ -3,7 +3,7 @@ GROUP=2019-05
 BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
 HOMEWORK_RUN=./otus-homeworks/homeworks/$BRANCH/run.sh
 REPO=https://github.com/express42/otus-homeworks.git
-DOCKER_IMAGE=express42/otus-homeworks
+DOCKER_IMAGE=express42/otus-homeworks:0.5
 
 echo GROUP:$GROUP
 
