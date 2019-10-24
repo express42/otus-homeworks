@@ -5,15 +5,18 @@ title 'cloud-testapp: deploy'
 
 control 'Check README.md' do
 
-  describe file('README.md') do
-    its('content') { should match /\s*testapp_IP\s*=\s*((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))\s{0,2}$/m }
-    its('content') { should match /\s*testapp_port\s*=\s*(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3})\s{0,2}$/m }
-
+  describe parse_config_file('README.md') do
+    its('testapp_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
   end
+  
+  describe parse_config_file('README.md') do
+    its('testapp_port') { should match /^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$/ }
+  end
+  
 end
 
-testapphost = File.read('README.md').match(/\s*testapp_IP\s*=\s*((?:(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2})\.){3}(?:25[0-5]|2[0-4]\d|[0-1]\d{2}|\d{1,2}))\s{0,2}$/m)[1]
-testappport = File.read('README.md').match(/\s*testapp_port\s*=\s*(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[1-5]\d{4}|[1-9]\d{0,3})\s{0,2}$/m)[1]
+testapphost = parse_config_file('README.md').testapp_IP
+testappport = parse_config_file('README.md').testapp_port
 
 control 'Configuration' do
   title 'Check testapp installation scenarios'
