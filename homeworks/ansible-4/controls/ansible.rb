@@ -11,7 +11,7 @@ control 'ansible' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd ansible && ansible-lint playbooks/site.yml --exclude=roles/jdauphant.nginx --exclude=.imported_roles/jdauphant.nginx') do
+  describe command('cd ansible && ansible-lint playbooks/site.yml --exclude=roles/jdauphant.nginx --exclude=.imported_roles/jdauphant.nginx --exclude=.imported_roles/db') do
     its('stdout') { should eq '' }
     its('exit_status') { should eq 0 }
   end
