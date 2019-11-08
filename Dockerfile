@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL version="0.7" maintainer="Express42"
+LABEL version="0.7" maintainer="ivango812"
 
 ARG PACKER_VER=1.4.4
 ARG TERRAFORM_VER=0.12.8
