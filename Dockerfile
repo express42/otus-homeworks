@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 
-LABEL version="0.7" maintainer="Express42"
+LABEL version="0.7.1" maintainer="Express42"
 
 ARG PACKER_VER=1.4.4
-ARG TERRAFORM_VER=0.12.8
+ARG TERRAFORM_VER=0.12.19
 ARG TFLINT_VER=0.11.2
 ARG ANSIBLE_VER=2.6.0
 ARG ANSLINT_VER=3.4.23
