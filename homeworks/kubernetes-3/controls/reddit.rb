@@ -11,7 +11,7 @@ control 'reddit' do
 
   describe file('kubernetes/reddit/mongo-deployment.yml') do
     it { should exist }
-    its('content') { should match /name:\smongo-gce-pd-storage/ }
+    its('content') { should match /name:\smongo-persistent-storage/ }
     its('content') { should match /persistentVolumeClaim:/ }
     its('content') { should match /post-db:\s"true"/ }
   end

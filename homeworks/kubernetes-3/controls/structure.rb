@@ -12,10 +12,8 @@ control 'structure' do
   files = [
     'README.md',
     'kubernetes/reddit/mongo-claim.yml',
-    'kubernetes/reddit/mongo-claim-dynamic.yml',
     'kubernetes/reddit/mongo-network-policy.yml',
     'kubernetes/reddit/mongo-volume.yml',
-    'kubernetes/reddit/storage-fast.yml',
     'kubernetes/reddit/ui-ingress.yml',
   ]
 
