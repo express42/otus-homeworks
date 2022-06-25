@@ -22,14 +22,31 @@ control 'Configuration' do
   title 'Check testapp installation scenarios'
 
   %w(ruby-full ruby-bundler build-essential mongodb-org).each do |pkg|
-      describe package(pkg) do
+    describe package(pkg) do
         it { should be_installed }
     end
   end
 
-  describe service('mongod') do
-    it { should be_enabled }
-    it { should be_running }
+  describe.one do
+    describe package('mongodb-org') do
+      it { should be_installed }
+    end
+
+    describe package('mongodb') do
+      it { should be_installed }
+    end
+  end
+
+  describe.one do
+    describe service('mongod') do
+      it { should be_enabled }
+      it { should be_running }
+    end
+
+    describe service('mongodb') do
+      it { should be_enabled }
+      it { should be_running }
+    end
   end
 
   describe port(27017) do
