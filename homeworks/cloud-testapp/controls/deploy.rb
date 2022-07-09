@@ -8,11 +8,11 @@ control 'Check README.md' do
   describe parse_config_file('README.md') do
     its('testapp_IP') { should match /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/ }
   end
-  
+
   describe parse_config_file('README.md') do
     its('testapp_port') { should match /^()([1-9]|[1-5]?[0-9]{2,4}|6[1-4][0-9]{3}|65[1-4][0-9]{2}|655[1-2][0-9]|6553[1-5])$/ }
   end
-  
+
 end
 
 testapphost = parse_config_file('README.md').testapp_IP
@@ -21,7 +21,7 @@ testappport = parse_config_file('README.md').testapp_port
 control 'Configuration' do
   title 'Check testapp installation scenarios'
 
-  %w(ruby-full ruby-bundler build-essential mongodb-org).each do |pkg|
+  %w(ruby-full ruby-bundler build-essential).each do |pkg|
     describe package(pkg) do
         it { should be_installed }
     end
