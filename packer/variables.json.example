@@ -1,0 +1,10 @@
+    {
+        "service_account_key_file": "key.json",
+        "folder_id": "dfgqs784jdhfop29k97dt",
+        "source_image_family": "ubuntu-1604-lts",
+        "platform_id": "standard-v1",
+        "ssh_username": "ubuntu",
+        "disk_size_gb": "11",
+        "instance_cores": "2",
+        "instance_mem_gb": "2"
+    }

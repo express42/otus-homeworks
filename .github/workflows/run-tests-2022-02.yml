@@ -1,0 +1,26 @@
+name: Run tests for OTUS homework
+
+on:
+  push:
+    branches-ignore: main
+  pull_request:
+    branches-ignore: main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+    - name: Checkout repo with tests
+      uses: actions/checkout@v2
+      with:
+        repository: "express42/otus-homeworks"
+        ref: 2022-02
+        path: "./otus-homeworks/"
+
+    - name: Run tests
+      run: curl https://raw.githubusercontent.com/express42/otus-homeworks/2022-02/run.sh | bash
