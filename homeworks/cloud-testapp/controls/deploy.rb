@@ -27,10 +27,10 @@ control 'Configuration' do
     end
   end
 
-  # describe service('mongod') do
-  #   it { should be_enabled }
-  #   it { should be_running }
-  # end
+  describe service('mongodb') do
+    it { should be_enabled }
+    it { should be_running }
+  end
 
   # describe port(27017) do
   #   it { should be_listening }
