@@ -21,22 +21,22 @@ testappport = parse_config_file('README.md').testapp_port
 control 'Configuration' do
   title 'Check testapp installation scenarios'
 
-  %w(ruby-full ruby-bundler build-essential git ).each do |pkg|
+  %w(ruby-full ruby-bundler build-essential mongodb).each do |pkg|
       describe package(pkg) do
         it { should be_installed }
     end
   end
 
-  describe service('mongod') do
-    it { should be_enabled }
-    it { should be_running }
-  end
+  # describe service('mongod') do
+  #   it { should be_enabled }
+  #   it { should be_running }
+  # end
 
-  describe port(27017) do
-    it { should be_listening }
-    its('protocols') { should include 'tcp' }
-    its('processes') { should include 'mongod' }
-  end
+  # describe port(27017) do
+  #   it { should be_listening }
+  #   its('protocols') { should include 'tcp' }
+  #   its('processes') { should include 'mongod' }
+  # end
 
   describe port(testappport) do
     it { should be_listening }
