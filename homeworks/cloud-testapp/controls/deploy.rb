@@ -32,11 +32,10 @@ control 'Configuration' do
   #   it { should be_running }
   # end
 
-  # describe port(27017) do
-  #   it { should be_listening }
-  #   its('protocols') { should include 'tcp' }
-  #   # its('processes') { should include 'mongod' }
-  # end
+  describe port(27017) do
+    it { should be_listening }
+    its('protocols') { should include 'tcp' }
+  end
 
   describe port(testappport) do
     it { should be_listening }
