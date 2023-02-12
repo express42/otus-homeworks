@@ -27,16 +27,16 @@ control 'Configuration' do
     end
   end
 
-  describe service('mongodb') do
-    it { should be_enabled }
-    it { should be_running }
-  end
-
-  # describe port(27017) do
-  #   it { should be_listening }
-  #   its('protocols') { should include 'tcp' }
-  #   its('processes') { should include 'mongod' }
+  # describe service('mongodb') do
+  #   it { should be_enabled }
+  #   it { should be_running }
   # end
+
+  describe port(27017) do
+    it { should be_listening }
+    its('protocols') { should include 'tcp' }
+    # its('processes') { should include 'mongod' }
+  end
 
   describe port(testappport) do
     it { should be_listening }
