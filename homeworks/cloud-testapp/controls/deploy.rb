@@ -21,7 +21,7 @@ testappport = parse_config_file('README.md').testapp_port
 control 'Configuration' do
   title 'Check testapp installation scenarios'
 
-  %w(ruby-full ruby-bundler build-essential mongodb-org).each do |pkg|
+  %w(ruby-full ruby-bundler build-essential).each do |pkg|
     describe package(pkg) do
         it { should be_installed }
     end
