@@ -20,7 +20,7 @@ control 'structure' do
     it { should exist }
   end
 
-  describe file('packer/variables.json.example') do
+  describe file('packer/variables.pkr.hcl.example') do
     it { should exist }
     its('content') {should match(%r{\n\Z})}
   end
