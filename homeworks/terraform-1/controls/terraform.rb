@@ -11,7 +11,7 @@ control 'terraform' do
     it { should exist }
   end
 
-  describe command('cd terraform && terraform init && terraform validate -var-file=terraform.tfvars.example') do
+  describe command('cd terraform && terraform init && terraform validate') do
     its('stdout') { should match "Terraform has been successfully initialized!" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
