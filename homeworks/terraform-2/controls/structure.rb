@@ -21,22 +21,22 @@ control 'structure' do
     it { should exist }
   end
 
-    describe file('packer/ubuntu16.json') do
+    describe file('packer/ubuntu16.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/app.json') do
+  describe file('packer/app.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/db.json') do
+  describe file('packer/db.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/variables.json.example') do
+  describe file('packer/variables.pkr.hcl.example') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end

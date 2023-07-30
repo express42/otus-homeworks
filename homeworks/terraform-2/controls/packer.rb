@@ -7,40 +7,40 @@ control 'packer' do
   impact 1
   title 'Run packer validate'
 
-  describe file('packer/ubuntu16.json') do
+  describe file('packer/ubuntu16.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/app.json') do
+  describe file('packer/app.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/db.json') do
+  describe file('packer/db.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/variables.json.example') do
+  describe file('packer/variables.pkr.hcl.example') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe command('cd packer && packer validate -var-file=variables.json.example ubuntu16.json') do
-    its('stdout') { should eq "Template validated successfully.\n" }
+  describe command('cd packer && packer validate -var-file=variables.pkr.hcl.example ubuntu16.pkr.hcl') do
+    its('stdout') { should eq "The configuration is valid.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd packer && packer validate -var-file=variables.json.example app.json') do
-    its('stdout') { should eq "Template validated successfully.\n" }
+  describe command('cd packer && packer validate -var-file=variables.pkr.hcl.example app.pkr.hcl') do
+    its('stdout') { should eq "The configuration is valid.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd packer && packer validate -var-file=variables.json.example db.json') do
-    its('stdout') { should eq "Template validated successfully.\n" }
+  describe command('cd packer && packer validate -var-file=variables.pkr.hcl.example db.pkr.hcl') do
+    its('stdout') { should eq "The configuration is valid.\n" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
   end
