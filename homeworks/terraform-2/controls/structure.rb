@@ -21,22 +21,22 @@ control 'structure' do
     it { should exist }
   end
 
-    describe file('packer/ubuntu16.json') do
+    describe file('packer/ubuntu16.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/app.json') do
+  describe file('packer/app.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/db.json') do
+  describe file('packer/db.pkr.hcl') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('packer/variables.json.example') do
+  describe file('packer/variables.pkr.hcl.example') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
@@ -75,17 +75,17 @@ control 'structure' do
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/terraform.tfvars.example') do
+  describe file('terraform/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/stage/terraform.tfvars.example') do
+  describe file('terraform/stage/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/prod/terraform.tfvars.example') do
+  describe file('terraform/prod/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
