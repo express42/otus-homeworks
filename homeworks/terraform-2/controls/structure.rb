@@ -75,17 +75,17 @@ control 'structure' do
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/terraform.tfvars.example') do
+  describe file('terraform/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/stage/terraform.tfvars.example') do
+  describe file('terraform/stage/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end
 
-  describe file('terraform/prod/terraform.tfvars.example') do
+  describe file('terraform/prod/terraform.example.tfvars') do
     it { should exist }
     its('content') { should match(%r{\n\Z}) }
   end

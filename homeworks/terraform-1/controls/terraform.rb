@@ -17,7 +17,7 @@ control 'terraform' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('cd terraform && tflint --var-file=terraform.tfvars.example') do
+  describe command('cd terraform && tflint --var-file=terraform.example.tfvars') do
     its('stdout') { should match "" }
     its('stderr') { should eq '' }
     its('exit_status') { should eq 0 }
