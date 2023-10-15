@@ -1,5 +1,5 @@
 #!/bin/bash
-GROUP=2023-07
+GROUP=2023-09
 BRANCH=${GITHUB_REF##*/}
 HOMEWORK_RUN=./otus-homeworks/homeworks/$BRANCH/run.sh
 REPO=https://github.com/express42/otus-homeworks.git
